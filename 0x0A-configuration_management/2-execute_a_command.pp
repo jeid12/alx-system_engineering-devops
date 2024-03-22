@@ -1,14 +1,6 @@
-# 2-execute_a_command.pp
+# kill process killmenow
 
-# Define the exec resource to kill the process
-exec { 'killmenow':
-  command     => '/usr/bin/pkill killmenow',
-  path        => '/usr/bin',
-  refreshonly => true,
+exec { 'pkill':
+  command  => 'pkill killmenow',
+  provider => 'shell',
 }
-
-# Notify when the process is killed
-notify { 'Process killmenow terminated':
-  subscribe => Exec['killmenow'],
-}
-
