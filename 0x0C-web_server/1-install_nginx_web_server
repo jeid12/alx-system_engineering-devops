@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Install nginx with '-y' option to automatically answer yes to prompts
+apt-get update
+apt-get install -y nginx
+
+# Make sure nginx is listening on port 80
+sed -i 's/^listen\s*\(.*\)/listen 80;/g' /etc/nginx/sites-available/default
+
+# Restart nginx
+service nginx restart
+
+# Create index.html with 'Hello World!' content
+echo "Hello World!" > /var/www/html/index.html
+
