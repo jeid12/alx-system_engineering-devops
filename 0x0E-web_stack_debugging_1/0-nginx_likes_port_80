@@ -1,6 +1,34 @@
 #!/usr/bin/env bash
-#configure nginx server to listen for port 80
-#this is spam
-#this is spam
-sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+
+# Install curl if not already installed
+apt-get update
+apt-get install -y curl
+
+# Check if Nginx is installed
+if ! [ -x "$(command -v nginx)" ]; then
+  echo "Nginx is not installed. Installing..."
+  apt-get install -y nginx
+fi
+
+# Check Nginx configuration to ensure it's listening on port 80
+nginx_conf="/etc/nginx/sites-available/default"
+if grep -q "listen 80;" "$nginx_conf"; then
+  echo "Nginx is configured to listen on port 80."
+else
+  echo "Configuring Nginx to listen on port 80..."
+  sed -i 's/listen 80 default_server;/listen 80;/g' "$nginx_conf"
+fi
+
+# Check for conflicting services using port 80
+conflicting_service=$(netstat -tuln | grep ":80 ")
+if [ -n "$conflicting_service" ]; then
+  echo "A conflicting service is already using port 80. Terminating..."
+  exit 1
+fi
+
+# Restart Nginx
+echo "Restarting Nginx..."
 service nginx restart
+
+echo "Nginx is now listening on port 80."
+
