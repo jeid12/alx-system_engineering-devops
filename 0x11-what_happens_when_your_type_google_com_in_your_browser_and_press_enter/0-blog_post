@@ -1,0 +1,31 @@
+
+The Magic Behind the URL: A Deep Dive
+The internet has become an indispensable part of our lives. We use it for everything from communication and entertainment to education and commerce. But have you ever stopped to wonder what happens when you type a web address into your browser and press Enter? It might seem instantaneous, but a fascinating sequence of events unfolds behind the scenes to deliver the content you see on your screen. This blog post will delve into the intricate details of this journey, exploring each step with informative text and visuals.
+The DNS Request: Navigating the Web's Address Book
+Imagine a vast metropolis where every building has a unique identifier that allows you to locate it easily. That's precisely how the internet functions. Websites reside on servers scattered across the globe, each with a unique IP address – a numerical label that acts as its specific location on the internet. However, humans don't remember long strings of numbers. That's where the Domain Name System (DNS) comes in.
+Think of DNS as a giant phonebook for the internet. It translates human-readable URLs (like https://www.google.com/) into the corresponding numerical IP addresses that computers can understand. When you enter a URL in your browser, it initiates a DNS request. This request travels to a DNS server, which then queries its records to find the IP address associated with the domain name.
+Here's a breakdown of the DNS request process:
+1.	Your Browser Initiates the Request: When you type a URL and press Enter, your browser doesn't directly contact the web server. Instead, it sends a DNS request to a DNS resolver, which is often your internet service provider's (ISP) DNS server.
+ 
+2.	The DNS Resolver Gets to Work: The DNS resolver checks its cache to see if it already has the IP address for the requested domain name stored locally. If it does, it returns the IP address to your browser right away.
+ 
+3.	Recursive Resolution (if necessary): If the IP address isn' t found in the cache, the DNS resolver acts like a detective. It contacts a root nameserver, which provides the location of the top-level domain (TLD) nameserver (like ".com" or ".org"). The DNS resolver then queries the TLD nameserver for the authoritative nameserver for the specific domain name.
+4.	The Authoritative Nameserver Responds: Finally, the DNS resolver reaches the authoritative nameserver, which holds the official IP address for the domain name. The authoritative nameserver retrieves the IP address and sends it back to the DNS resolver.
+5.	The Answer Makes its Way Back: The DNS resolver receives the IP address and caches it for future reference. It then forwards the IP address back to your browser.
+6.	Your Browser Connects to the Web Server: With the IP address in hand, your browser can now establish a direct connection with the web server hosting the website.
+Resources:
+•	How DNS Works: https://dnsmadeeasy.com/support/faq
+•	A Visual Guide to DNS: https://dnsviz.net/
+TCP/IP: The Language of the Web
+Now that your browser knows the web server's location (IP address), it's time to communicate. But how do computers converse across vast networks? That's where the Transmission Control Protocol/Internet Protocol (TCP/IP) comes into play.
+Think of TCP/IP as a universal language spoken by all devices on the internet. It's a suite of protocols that defines how data is formatted, transmitted, and received.
+TCP acts like a reliable mail carrier, ensuring your request reaches the web server in the correct order and without errors. It does this by breaking down your request into smaller packets, assigning a sequence number to each packet, and acknowledging receipt from the server.
+ 
+IP, on the other hand, acts like the addressing system. It specifies the source and destination IP addresses for each data packet, ensuring it reaches the intended web server.
+Resources:
+•	An Introduction to TCP/IP: https://www.computerhope.com/jargon/t/tcp.htm
+•	TCP/IP Illustrated, Volume 1: https://www.amazon.com/TCP-Illustrated-Protocols-Addison-Wesley-Professional-ebook/dp/B00666M52S (This is a comprehensive book for a deeper dive)
+Firewall: The Gatekeeper
+Before your request reaches the web server, it might encounter a security checkpoint – the firewall.
+
+
